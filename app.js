@@ -2,7 +2,7 @@ const express=require('express');
 const app=express();
 //const port=process.env.PORT || '443'   
 
-const port='443'   
+const port=app.set('port', (process.env.PORT || 5000)); 
 
 const connectDB=require('./db/connectdb.js')   
 const session = require('express-session');
