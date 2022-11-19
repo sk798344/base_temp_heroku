@@ -1,10 +1,7 @@
 const express=require('express');
 const app=express();
-require('dotenv').config()
-//const port=process.env.PORT || '443'   
-
-app.set('port', (process.env.PORT || 5000)); 
-
+const env=require('dotenv').config()
+const port=process.env.PORT || '3000'   
 const connectDB=require('./db/connectdb.js')   
 const session = require('express-session');
 const { join } = require('path');
@@ -12,7 +9,7 @@ const { join } = require('path');
 app.use(express.urlencoded({extended:false}))
 
 app.use(session({
-	name:'base_temp',    
+	name:'base_temp',
   secret: 'test',
 	resave:false,
 	saveUninitialized:true,
@@ -27,6 +24,6 @@ const web=require('./routes/web.js');
 
 app.use('/',web)
 
-app.listen(app.get('port'),()=>{
+app.listen(port,()=>{
 	console.log('its running on 3000');
 })
