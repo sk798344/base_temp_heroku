@@ -1,5 +1,6 @@
 const express=require('express');
 const app=express();
+require('dotenv').config()
 //const port=process.env.PORT || '443'   
 
 app.set('port', (process.env.PORT || 5000)); 
@@ -11,7 +12,7 @@ const { join } = require('path');
 app.use(express.urlencoded({extended:false}))
 
 app.use(session({
-	name:'base_temp',
+	name:'base_temp',    
   secret: 'test',
 	resave:false,
 	saveUninitialized:true,
