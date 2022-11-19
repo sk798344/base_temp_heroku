@@ -1,6 +1,9 @@
 const express=require('express');
 const app=express();
-const port=process.env.PORT || '443'   
+//const port=process.env.PORT || '443'   
+
+const port='443'   
+
 const connectDB=require('./db/connectdb.js')   
 const session = require('express-session');
 const { join } = require('path');
