@@ -2,7 +2,7 @@ const express=require('express');
 const app=express();
 const env=require('dotenv').config()
 const port=process.env.PORT || '3000'   
-const connectDB=require('./db/connectdb.js')   
+//const connectDB=require('./db/connectdb.js')   
 const session = require('express-session');
 const { join } = require('path');
 
