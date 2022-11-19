@@ -2,7 +2,7 @@ const express=require('express');
 const app=express();
 const env=require('dotenv').config()
 const port=process.env.PORT || '3000'   
-//const connectDB=require('./db/connectdb.js')   
+const connectDB=require('./db/connectdb.js')   
 const session = require('express-session');
 const { join } = require('path');
 
@@ -18,7 +18,9 @@ app.use(session({
 app.set('view engine','ejs')
 
 //////// for static files
-app.use(express.static(join(process.cwd(),'public')))
+//app.use(express.static(join(process.cwd(),'public')))
+
+app.use('/static', express.static(__dirname + "/public"))
 
 const web=require('./routes/web.js');
 

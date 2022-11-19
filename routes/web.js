@@ -14,13 +14,13 @@ router.get('/screenshot',screenshot)
 
 router.get('/blog',blog)
 
-router.get('/contact',contact)
+router.get('/contact',contact)   
 
 //////////////  admin router start ///////////////
 
 router.get('/admin/index',index)
 
-router.get('/admin/add-contact',add_contact_details)
+router.get('/admin/add-contact/:result?',add_contact_details)    
 
 router.get('/admin/manage-contact',manage_contact_details)
 
