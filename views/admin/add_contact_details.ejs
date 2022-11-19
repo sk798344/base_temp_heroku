@@ -1,12 +1,12 @@
 <%- include('header.ejs') %>
 
-<main id="main" class="main">   
+<main id="main" class="main">      
 
     <div class="pagetitle">
-      <h1>Add Contact</h1>
+      <h1>Add Contact</h1> 
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index">Home</a></li>
+          <li class="breadcrumb-item"><a href="/admin/index">Home</a></li>
           <li class="breadcrumb-item active">Add Contact</li>
         </ol>
       </nav>
@@ -61,6 +61,12 @@
     
                   </form><!-- End General Form Elements -->
     
+                  <% if(result=="success"){%>
+                    <div class="alert alert-success">
+                      <strong>Success!</strong> Data addedd successfully.
+                    </div>                     
+                  <% } %>  
+
                 </div>
               </div>           
 

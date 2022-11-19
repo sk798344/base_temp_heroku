@@ -5,12 +5,20 @@ const index=(req,res)=>{
 }
 
 const add_contact_details=(req,res)=>{
-   res.render('admin/add_contact_details');    
+   console.log(req.params.result);
+   res.render('admin/add_contact_details',{result:req.params.result});    
 }
 
-const manage_contact_details=(req,res)=>{
-   res.render('admin/manage_contact_details');
-}
+const manage_contact_details=async(req,res)=>{
+   try{
+      const result=await ContactdetailModel.find()
+      console.log(result)
+      res.render('admin/manage_contact_details',{data:result});
+   }catch(err){
+     console.log(err)
+   }
+   
+}   
 
 const add_contact_details_backend=async(req,res)=>{
    try{    

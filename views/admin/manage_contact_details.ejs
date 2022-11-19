@@ -1,0 +1,55 @@
+<%- include('header.ejs') %>
+
+<main id="main" class="main">      
+
+    <div class="pagetitle">
+      <h1>Add Contact</h1> 
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/admin/index">Home</a></li>
+          <li class="breadcrumb-item active">Manage Contact</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section dashboard">
+        <div class="row">
+
+            <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Manage Contact Details</h5>
+
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Message</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% data.forEach((item)=>{ %>
+                        <tr>
+                            <td><%= item.name%></td>
+                            <td><%= item.phone %></td>
+                            <td><%= item.email %></td>
+                            <td><%= item.message %></td>
+                          </tr>
+
+                      <% }) %>  
+
+                    </tbody>
+                  </table>                  
+
+
+                </div>
+              </div>           
+
+        </div>
+    </section>
+
+</main>
+
+
+<%- include('footer.ejs') %>
