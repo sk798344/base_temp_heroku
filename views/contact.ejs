@@ -15,25 +15,29 @@
               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 offset-md-3">
                  <div class="contact">
                     
-                    <form>
+                    
                        <div class="row">
                           <div class="col-sm-12">
-                             <input class="contactus" placeholder="Name" type="text" name="Name">
+                             <input class="contactus" placeholder="Name" type="text" name="Name" id="name">
+                             <p style="color:red;display:none" class="nam_err">Name is mandatory.</p>
                           </div>
                           <div class="col-sm-12">
-                             <input class="contactus" placeholder="Phone" type="text" name="Email">
+                             <input class="contactus" placeholder="Phone" type="text" name="Email" id="contact_us" onkeypress="return onlyNumberKey(event)" >
+                             <p style="color:red;display:none" class="contact_err">Phone number is mandatory.</p>
                           </div>
                           <div class="col-sm-12">
-                             <input class="contactus" placeholder="Email" type="text" name="Email">
+                             <input class="contactus" placeholder="Email" type="text" name="Email" id="email">
+                             <p style="color:red;display:none" class="email_err">Email is mandatory.</p>
                           </div>
                           <div class="col-sm-12">
-                             <textarea class="textarea" placeholder="Message" type="text" name="Message"></textarea>
+                             <textarea class="textarea" placeholder="Message" type="text" name="Message" id="message"></textarea>
                           </div>
                           <div class="col-sm-12">
-                             <button class="send">Send</button>
+                             <button class="send" onclick="submit_details()">Send</button>
+                              <div><p class="success_msg" style="text-align: center;color:green ;display:none">Details send Successfully</p></div>
                           </div>
                        </div>
-                    </form>
+                    
                  </div>
               </div>
            </div>
@@ -42,3 +46,58 @@
      <!-- end Testimonial --> 
 
 <%- include('./partials/footer.ejs') %>
+
+<script>
+   function onlyNumberKey(evt) {
+         
+         // Only ASCII character in that range allowed
+         var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+         if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+            return false;
+         return true;
+      }
+
+   function submit_details(){
+      var name=$('#name').val();
+      if(name){}else{
+         $('.nam_err').show(); return flase;
+      }
+
+      var contact_us=$('#contact_us').val();
+      if(contact_us){}else{
+         $('.contact_err').show(); return flase;
+      }      
+
+      var email=$('#email').val();
+      if(email){}else{
+         $('.email_err').show(); return flase;
+      }  
+
+      var message=$('#message').val();
+
+      const formData = new FormData();
+      formData.append("name", name);
+      formData.append("contact_us", contact_us);
+      formData.append("email", email);
+      formData.append("message", message);  
+      console.log(formData)    
+      $.ajax({
+         type:'POST',
+         url:'/contact_backend',
+         data:formData,
+         processData: false,
+         contentType: false,
+         cache: false,
+         success:function(data){
+             console.log('contact_form_data',data)
+             if(data._id){
+               $('.success_msg').show()
+               setTimeout(function(){
+                 location.reload()
+               }, 2000);
+             }
+         }
+      })
+
+   }
+</script>

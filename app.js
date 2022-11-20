@@ -5,9 +5,16 @@ const port=process.env.PORT || '3000'
 const connectDB=require('./db/connectdb.js')   
 const session = require('express-session');
 const { join } = require('path');
+var bodyParser = require('body-parser');
+
+var multer = require('multer');
+var upload = multer();
 
 app.use(express.urlencoded({extended:false}))
 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(upload.array()); 
 app.use(session({
 	name:'base_temp',
   secret: 'test',
