@@ -8,14 +8,15 @@ const{index,add_contact_details,manage_contact_details,add_contact_details_backe
 const{add_slider_details,manage_slider_details}=require('../controllers/slidercontroller')
 
 router.get('/',home)
-
+   
 router.get('/about',about)
 
 router.get('/service',service)
 
 router.get('/screenshot',screenshot)
 
-router.get('/blog',blog)
+router.get('/blog',blog)     
+
 
 router.get('/contact',contact)   
 

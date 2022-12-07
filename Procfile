@@ -1,1 +1,1 @@
-web: sh setup.sh && streamlit run app.js
+web: npm start   
