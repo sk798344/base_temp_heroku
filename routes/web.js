@@ -17,7 +17,6 @@ router.get('/screenshot',screenshot)
 
 router.get('/blog',blog)     
 
-
 router.get('/contact',contact)   
 
 router.post('/contact_backend',contact_form_backend)
